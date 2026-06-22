@@ -993,3 +993,16 @@ body::before{
   mix-blend-mode:overlay;
   z-index:1;
 }
+
+/* 1. Hide the mobile menu by default (for desktop/larger screens) */
+.mobile-menu {
+  display: none; 
+}
+
+/* 2. Show the mobile menu ONLY on screens 768px wide or smaller */
+@media (max-width: 768px) {
+  .mobile-menu {
+    display: flex; /* You can also use 'block' depending on your design */
+    flex-direction: column; /* Stacks the links vertically */
+  }
+}
