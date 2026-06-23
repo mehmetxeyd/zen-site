@@ -1,12 +1,17 @@
 // ============================================================
-// 1. PAGE-LOAD CURTAIN — remove after animation so it doesn't block clicks
+// 1. PAGE-LOAD CURTAIN — guaranteed removal via hard timer
+//    Runs from script execution start, NOT from window.load,
+//    so it works even if the load event has already fired
+//    or if some resource is slow to load.
 // ============================================================
-window.addEventListener('load', () => {
+(function removeCurtain() {
   const curtain = document.querySelector('.page-curtain');
   if (!curtain) return;
-  // Remove curtain element well after its CSS animation completes
-  setTimeout(() => curtain.remove(), 2600);
-});
+  // Hide it as soon as the slide-up animation finishes (~2.3s)
+  setTimeout(() => curtain.classList.add('gone'), 2400);
+  // Belt + suspenders: fully remove from DOM shortly after
+  setTimeout(() => { if (curtain.parentNode) curtain.remove(); }, 3000);
+})();
 
 // ============================================================
 // 2. SCROLL REVEAL

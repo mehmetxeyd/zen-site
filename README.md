@@ -2,6 +2,17 @@
 
 Static one-page site for **zen web solutions**. No build step, no framework. Drop it on Cloudflare Pages and it works.
 
+## 🚨 If you re-deploy and animations look broken
+
+You're almost certainly seeing **cached old CSS/JS** in your browser.
+
+Fix in order:
+1. **Hard refresh** the page: `Ctrl + Shift + R` (Windows/Linux) or `Cmd + Shift + R` (Mac).
+2. If that doesn't work, **open in an Incognito / Private window** — bypasses cache entirely.
+3. Last resort: in the Cloudflare dashboard → your Pages project → **Caching** → **Purge Everything**.
+
+This site's `_headers` caches CSS/JS for 1 hour. If you're iterating frequently, the easiest workflow is to keep dev tools open with "Disable cache" checked (Network tab in Chrome/Firefox).
+
 ## Files
 
 ```
